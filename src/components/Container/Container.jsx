@@ -12,7 +12,12 @@ function Container({data}) {
             return (
                 <div className="col-3" key={el.id}>
                 <Card 
-                    data={el}
+                    name={el.name}
+                    picture={el.picture}
+                    gender={el.gender}
+                    id={el.id}
+                    phone={el.phone}
+                    email={el.email}
                 />
                 </div>
                 )

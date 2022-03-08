@@ -11,12 +11,14 @@ function App() {
 
   const fetchData = useCallback( async () => {
     const rawData = await axios.get('https://randomuser.me/api/?results=4')
-    const mappedApiData = await rawData.data.results.map(({name, picture, gender, login }) => {
+    const mappedApiData = await rawData.data.results.map(({name, picture, gender, login, email, phone }) => {
       return { 
         id: login.uuid,
         name: `${name.first} ${name.last}`,
         picture: picture.large,
         gender: gender,
+        email: email,
+        phone: phone,
       }
     })
     SetApiData(mappedApiData)
