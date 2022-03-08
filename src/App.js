@@ -1,25 +1,43 @@
-import logo from './logo.svg';
+import axios from 'axios';
+import {useState, useEffect, useCallback} from 'react'
 import './App.css';
 
+import Container from './components/Container/Container'
+import Table from './components/Table/Table'
+
 function App() {
+  const [apiData, SetApiData] = useState([])
+  const [tableData, SetTableData] = useState({})
+
+  const fetchData = useCallback( async () => {
+    const rawData = await axios.get('https://randomuser.me/api/?results=4')
+    const mappedApiData = await rawData.data.results.map(({name, picture, gender, login }) => {
+      return { 
+        id: login.uuid,
+        name: `${name.first} ${name.last}`,
+        picture: picture.large,
+        gender: gender,
+      }
+    })
+    SetApiData(mappedApiData)
+  }, [apiData])
+
+  useEffect( () =>{
+    fetchData();
+    console.log('loaded')
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Contact Classifier</h1>
+      {!apiData ? (<h1>Loading</h1>) : (<Container data={apiData}>
+      <Table/>
+      </Container>)}
     </div>
   );
 }
 
 export default App;
+
+
+
