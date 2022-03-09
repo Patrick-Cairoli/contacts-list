@@ -22,7 +22,7 @@ const Table = ( {tableData, selectedUser} ) => {
   <tbody>
     <tr>
       <th scope="row">{name}</th>
-      <td>{gender === "male" ? (<i className="fa-solid fa-mars"></i>) : (<i className="fa-solid fa-venus"></i>)}</td>
+      <td>{gender === "male" ? (<i className="fa-solid fa-mars text-info"></i>) : (<i className="fa-solid fa-venus text-danger"></i>)}</td>
       <td>{email}</td>
       <td>{phone}</td>
       <td>{userName}</td>

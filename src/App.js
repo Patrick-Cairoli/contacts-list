@@ -34,9 +34,20 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="mt-4">Contact Manager</h1>
-      {!apiData.length ? (<Spinner />) : (<Container data={apiData} SetSelectedUser={SetSelectedUser}/>)}
-      {(apiData.length > 0 && selectedUser.length > 0) && (<Table tableData={apiData} selectedUser={selectedUser} />)}
+      <div className="container mt-2">
+        <div className="row justify-content-between align-items-center">
+          <div className="col-auto">
+            <h1 className="text-muted">Contact Manager</h1>
+          </div>
+          <div className="col-auto">
+            <button type="button" onClick={() => fetchData()} className="btn btn-outline-info">Fetch Random Users</button>
+          </div>
+        </div>
+        <div className="row justify-content-between">
+          {!apiData.length ? (<Spinner />) : (<Container data={apiData} SetSelectedUser={SetSelectedUser} />)}
+          {(apiData.length > 0 && selectedUser.length > 0) && (<Table tableData={apiData} selectedUser={selectedUser} />)}
+        </div>
+      </div>
     </div>
   );
 }

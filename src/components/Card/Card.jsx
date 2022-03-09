@@ -10,7 +10,7 @@ const Card = ({name, picture, email, phone, id, location,  SetSelectedUser }) =>
   return (
     <div className="card mb-2 pb-3 bg-dark text-info border border-warning px-3">
       <div className="card-header title">{name}</div>
-      <img src={picture} className="card-img-top rounded mx-auto" alt={name} />
+      <img src={picture} className="card-img-top rounded mx-auto " alt={name} />
       <div className="card-body">
         <h5 className="card-title text-warning"><i className="fa-solid fa-location-dot"></i> {location}</h5>
       </div>
