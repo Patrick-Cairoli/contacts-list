@@ -8,7 +8,6 @@ import Spinner from './components/Spinner/Spinner'
 
 function App() {
   const [apiData, SetApiData] = useState([])
-  const [tableData, SetTableData] = useState([])
   const [selectedUser, SetSelectedUser] = useState('')
 
 
