@@ -9,11 +9,12 @@ import Spinner from './components/Spinner/Spinner'
 function App() {
   const [apiData, SetApiData] = useState([])
   const [tableData, SetTableData] = useState([])
+  const [selectedUser, SetSelectedUser] = useState('')
 
 
   const fetchData = useCallback( async () => {
-    const rawData = await axios.get('https://randomuser.me/api/?results=4')
-    const mappedApiData = await rawData.data.results.map(({name, picture, gender, login, email, phone }) => {
+    const rawData = await axios.get('https://randomuser.me/api/?results=3')
+    const mappedApiData = await rawData.data.results.map(({ name, picture, gender, login, email, phone, location }) => {
       return { 
         id: login.uuid,
         userName: login.username,
@@ -23,6 +24,7 @@ function App() {
         gender: gender,
         email: email,
         phone: phone,
+        location: `${location.city}, ${location.country}.`
       }
     })
     SetApiData(mappedApiData)
@@ -34,22 +36,11 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Contact Classifier</h1>
-      {!apiData.length ? (<Spinner />) : (<Container data={apiData}/>)}
-      {apiData.length && (<Table tableData={apiData} />)}
+      <h1 className="mt-4">Contact Manager</h1>
+      {!apiData.length ? (<Spinner />) : (<Container data={apiData} SetSelectedUser={SetSelectedUser}/>)}
+      {(apiData.length > 0 && selectedUser.length > 0) && (<Table tableData={apiData} selectedUser={selectedUser} />)}
     </div>
   );
 }
 
 export default App;
-
-
-
-// SetSelectedUser({id: '',
-// userName: '',
-// password: '',
-// name: 'Alvison',
-// picture: '',
-// gender: '',
-// email: '',
-// phone: ''});

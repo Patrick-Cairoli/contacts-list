@@ -1,11 +1,15 @@
 import React from 'react'
 
+const Table = ( {tableData, selectedUser} ) => {
 
-const Table = ( {tableData} ) => {
-  const {id, userName, password, name, gender, email, phone } = tableData[0];
+  const filtered = tableData?.find(el => el.id === selectedUser)
+  console.log("selectedUser", selectedUser)
 
-  // const [selectedUser, SetSelectedUser] = useState({})
+  const {id, userName, password, name, gender, email, phone, picture } = filtered;
+  console.log("filtered", filtered)
 
+  console.log(id, userName, password, name, gender, email, phone, picture)
+  
   return (
     <div className="table-container">
       <table className="table table-dark table-striped">
@@ -22,7 +26,7 @@ const Table = ( {tableData} ) => {
   <tbody>
     <tr>
       <th scope="row">{name}</th>
-      <td>{gender}</td>
+      <td>{gender === "male" ? (<i className="fa-solid fa-mars"></i>) : (<i className="fa-solid fa-venus"></i>)}</td>
       <td>{email}</td>
       <td>{phone}</td>
       <td>{userName}</td>
