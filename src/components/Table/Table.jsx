@@ -4,7 +4,7 @@ const Table = ( {tableData, selectedUser} ) => {
 
   const filtered = tableData?.find(el => el.id === selectedUser)
 
-  const {id, userName, password, name, gender, email, phone, picture } = filtered;
+  const {userName, password, name, gender, email, phone } = filtered;
 
   return (
     <div className="table-container">

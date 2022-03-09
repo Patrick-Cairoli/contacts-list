@@ -10,7 +10,6 @@ function App() {
   const [apiData, SetApiData] = useState([])
   const [selectedUser, SetSelectedUser] = useState('')
 
-
   const fetchData = useCallback( async () => {
     const rawData = await axios.get('https://randomuser.me/api/?results=3')
     const mappedApiData = await rawData.data.results.map(({ name, picture, gender, login, email, phone, location }) => {
@@ -27,11 +26,11 @@ function App() {
       }
     })
     SetApiData(mappedApiData)
-  }, [apiData])
+  }, [])
 
   useEffect( () =>{
     fetchData();
-  }, [])
+  }, [fetchData])
 
   return (
     <div className="App">
