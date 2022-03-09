@@ -3,13 +3,9 @@ import React from 'react'
 const Table = ( {tableData, selectedUser} ) => {
 
   const filtered = tableData?.find(el => el.id === selectedUser)
-  console.log("selectedUser", selectedUser)
 
   const {id, userName, password, name, gender, email, phone, picture } = filtered;
-  console.log("filtered", filtered)
 
-  console.log(id, userName, password, name, gender, email, phone, picture)
-  
   return (
     <div className="table-container">
       <table className="table table-dark table-striped">
