@@ -4,6 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [LIVE PREVIEW DEMO](https://contacts-basic-board.netlify.app/)
 
+App Screenshot:
+![image](https://user-images.githubusercontent.com/86063982/157375933-62f6d8cc-87cb-494f-9ec6-fa9a968cf84b.png)
+
+
 ## Available Scripts
 
 In the project directory, you can run:
