@@ -26,6 +26,7 @@ function App() {
       }
     })
     SetApiData(mappedApiData)
+    SetSelectedUser('')
   }, [])
 
   useEffect( () =>{
